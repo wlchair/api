@@ -1,7 +1,7 @@
 FORMAT: 1A
 HOST: http://www.fn.com
 
-# Online interaction API of FN
+# Interaction API of FN
 
 > 为保证我们的设计思想和开发成果保持一致，采用互动性文档进行的结果验证，其功能包含几个方面
 > - 文档的生成
@@ -348,7 +348,7 @@ HOST: http://www.fn.com
 ### Cut or Copy Info to Any Where [POST]
 
 + Request (application/json)
-    + Attributes (Table Identify)
+    + Attributes (object)
         + orignal (Coordinate properties) - 数据原来的位置
         + target (Orignal Coordinate)
         
@@ -377,8 +377,6 @@ HOST: http://www.fn.com
 
 ### Undo Oprtaion [GET]
     后退操作
-+ Request (application/json)
-    + Attributes (Table Identify)
 
 + Response 200
 
@@ -389,9 +387,6 @@ HOST: http://www.fn.com
 + Response 200
 
 # Data Structures
-
-## Table Identify (object) - 表格的ID标识
-+ fnId: `1`(string) - 32为UUID
 
 ## Sheet Identify (object) - 单个sheet的ID标识
 + sheetId: `1` (string) - 字符串类型的sheetId，自增的整数
