@@ -1,0 +1,414 @@
+FORMAT: 1A
+HOST: http://www.fn.com
+
+# Online interaction API of FN
+
+> 为保证我们的设计思想和开发成果保持一致，采用互动性文档进行的结果验证，其功能包含几个方面
+> - 文档的生成
+> - 数据请求结果记录
+> - 在线编辑文档内容
+> - 模拟数据，正式环境数据
+> - 文档和开发结果匹配测试
+
+
+## 阅读&使用须知
+
+### 全局变量
+
+> `SPREADSHEET_AUTHENTIC_KEY`: 当前页面的唯一`FNID`, 不管是新建或更新表
+> `SPREADSHEET_BUILD_STATE`: 当前表的状态，
+> 新建或者更新，如果是更新表需要发起请求数据内容的操作
+
+### REST命名规则
+
+> `url`的组成结构： `{根目录}/{模块}/{操作- ?子操作}` 
+> 模块有4中类型，`Table`,`Sheet`,`Row|Col`,`Cell`
+> 操作根据具体层级关系递进，中间用 `-` 间隔
+>>如 设置字体颜色，`http://www.fn.com/cell/font-color`
+
+### 文档缺陷
+
+> 由于文档没有实现`Headers`的重用
+> 所有我们在Mock时，自定在`Headers`里面指定`FN-Step`、`FN-ID`信息
+
+### 传递参数的意义解释
+
+> 交互阶段传入的坐标信息都是`sort`值，即：后台数据存储的行列索引值
+> 整行、列操作时，最大值用-1表示
+>> 如：第五列
+>>```
+>> {
+>>      startRow: 0,
+>>      startCol: 4,
+>>      endRow：-1,
+>>      endCol: 5
+>>}
+>>```
+
+### 留存的疑问
+> - optional 和 required的区别，和作用
+>>optional后面必须跟Member成员
+>
+> - 怎么进行值传递，参数变量
+>>API的point功能可以实现
+>
+> - 功能，外边粘进来，参数的意义都是什么？
+> - reload的参数都是什么意思？
+> - 缺少openexcel和addrow|addcol操作
+> - 缺少行列的操作接口信息
+
+# Group Opration Row or Col
+
+## Rows Opration [/row/{actionType}]
+
+    行操作，插入，删除，行高调整
+    
++ Parameters
+    + actionType: `plus` (string) - 动作类型
+        + Members
+            + `plus`
+            + `reduce`
+
++ Attributes (Sheet Identify)
+    + row: 1(number) - 行号
+    
+### Insert Or Delete [POST]
+
++ Request (application/json)
+
+    + Attributes (Rows Opration)
+    
++ Response 200
+
+## adjust Row Height [POST /row/adjust]
+    行高调整
++ Request (application/json)
+
+    + Attributes
+        + offset: `87`(number) - 调整后的值,最小值为5px
+    
++ Response 200
+
+## Cols Opration [/col/{actionType}]
+
++ Parameters
+    + actionType: `plus` (string) - 动作类型
+        + Members
+            + `plus`
+            + `reduce`
+
++ Attributes (Sheet Identify)
+    + col: 1(number) - 列号
+
+### Insert or Delete [POST]
+    
++ Request (application/json)
+
+    + Attributes (Cols Opration)
+    
++ Response 200
+
+## adjust Col Width [POST /col/adjust]
+    行高调整
++ Request (application/json)
+
+    + Attributes (Cols Opration)
+        + offset: `87`(number) - 调整后的值,最小值为5px
+    
++ Response 200
+
+# Group Opration Cells
+
+## Merge or Split [/cell/{actionType}]
+
++ Parameters
+    + actionType: `merge`(string) - 动作类型
+        + Members
+            + `merge`
+            + `split`
+
+### Merge or Split Cells [POST]
+
++ Request (application/json)
+    
+    + Attributes (Coordinate)
+
++ Response 200
+
+## Borders [/cell/border]
+
+### Set Borders Style [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + direction: `top` (enum[string])
+            + Members
+                + `top`
+                + `right`
+                + `bottom`
+                + `left`
+                + `all`
+                + `outer`
+                + `none`
+
++ Response 200
+
+## Align transverse [/cell/align-landscape]
+
+### Set transverse Style [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + align: `left` (enum[string])
+            + Members
+                + `left`
+                + `center`
+                + `right`
++ Response 200
+
+## Align vertically [/cell/align-portrait]
+
+### Set vertically Style [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + align: `top` (enum[string])
+            + Members
+                + `top`
+                + `middle`
+                + `bottom`
++ Response 200
+
+
+## Delete Cells [/cell/reduce]
+
+    用户可以通过操作，直接删除单元格的所有内容和格式，等于删除了整个单元格
+
+### Delete Cells All Info [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+
++ Response 200
+
+## Format Cells Type [/cell/format]
+
+    单元格的类型设置
+
+### Setting Cells Type [POST]
+    
++ Request (application/json)
+    + Attributes (Coordinate)
+        + format:`routine`(enum[string]) - 常规类型
+            + Members
+                + `routine` - 常规类型
+                + `text`
+                + `number`
+                + `date`
+                + `currency`
+                + `percent`
+        + express: `###.##`(string) - 格式表达式，限制性的解释POI中的规则，如果超出解释范围就为默认类型
+
++ Response 200
+
+
+# Group Cell Data Opration
+
+    针对单元格里面的处理的操作，修改内容，给内容加上注释
+
+## Content [/cell/content]
+
+### Setting Data Content [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + content: `<script>console.log("1")</script>`(string) - 输入的内容，内容需要经过转码的，防止代码攻击
+
++ Response 200
+
+## Add or Update Comments [/cell/comment-plus]
+
+### Setting Data Comments for explain [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + comment: `<script>console.log("1")</script>`(string, required) - 输入的内容，内容需要经过转码的，防止代码攻击
+
++ Response 200
+
+## Delete Comments [/cell/comment-reduce]
+
+### Delete Data Comments [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+
++ Response 200
+
+# Group Cells Font Style Opration
+
+## Font Size [/cell/font-size]
+
+### Update Font Size [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + size: `12`(number) - 字体默认是12pt，最大值48，都是以pt为单位
+        
++ Response 200
+
+## Font Family [/cell/font-family]
+
+### Update Font Family [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + family: `宋体`(enum[string]) - 字体默认是宋体，其余字体风格是枚举类型
+            + Members
+                + `宋体`
+                + `微软雅黑`
+                + `黑体`
+                + `Tahoma`
+                + `Arial`
+                + `楷体`
+        
++ Response 200
+
+## Font Weight [/cell/font-weight]
+
+### Update Font Weight [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + weight: 700 (number) - 字体默认是700，其余选项是枚举类型从100-900
+        
++ Response 200
+
+## Font Italic [/cell/font-italic]
+
+### Update Font Italic [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + italic: false (boolean) - 默认为非斜体
+        
++ Response 200
+
+## Font Color [/cell/font-color]
+
+### Update Font Color [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + color: `#000` (string) - 编码遵循RGB的规则编码
+        
++ Response 200
+
+# Group Table Opration
+
+## Table Reload [/reload/{fnid}]
+
++ Parameters
+    + fnid: `ce1ef7b6-d338-4784-b87b-14bf33c1a040` - 32位uuid
+
+### Reload All Info [GET]
+
++ Response 200 (application/json)
+    
+        {
+            "info":""
+        }
+
+## Table Paste [/paste]
+
++ Attributes (object)
+    + col: 4 (number) - 粘贴时列坐标点
+    + row: 6 (number) - 粘贴时行坐标点
+    + content:`this is paste content`(string) - 粘进来的内容
+
+### Paste All Info to Any Where [POST]
+
++ Request (application/json)
+    + Attributes (array[Table Paste])
+        
++ Response 200
+    + Attributes (object)
+        + isLegal: true(boolean) - 是否合法
+
+## Table Cut [/{actionType}]
+
++ Parameters
+    + actionType: `cut`(string)
+        这个动作是剪切或者复制，这个动作的触发只能在excel出现，跟外部交互的操作都是粘贴操作，
+        由于浏览器的保护，数据不能获取被剪切到外部的事件
+        + Members
+            + `cut`
+            + `copy`
+
+### Cut or Copy Info to Any Where [POST]
+
++ Request (application/json)
+    + Attributes (Table Identify)
+        + orignal (Coordinate properties) - 数据原来的位置
+        + target (Orignal Coordinate)
+        
+        
++ Response 200
+
+## Frozen View [/frozen]
+
++ Attributes (Orignal Coordinate)
+    + fnId: `1`(string) - 32为UUID
+    + viewRow: 45(number) - 冻结时，用户可以看到范围，行编号
+    + viewCol: 0 (number) - 冻结时，用户看见的范围，列编号
+
+### Frozen Position [POST]
+
+    不管冻结怎么冻结，只需要把坐标传给后台就行了
+    
++ Request (application/json)
+    + Attributes (Frozen View)
+        
++ Response 200
+
+# Group Sheet Opration
+
+## Undo [/undo]
+
+### Undo Oprtaion [GET]
+    后退操作
++ Request (application/json)
+    + Attributes (Table Identify)
+
++ Response 200
+
+## Redo [/redo]
+    前进操作
+### Redo Opration [GET]
+
++ Response 200
+
+# Data Structures
+
+## Table Identify (object) - 表格的ID标识
++ fnId: `1`(string) - 32为UUID
+
+## Sheet Identify (object) - 单个sheet的ID标识
++ sheetId: `1` (string) - 字符串类型的sheetId，自增的整数
+
+## Routine (object) - 正常的返回值
++ returncode: 200 (number) - http的编码
++ returndata: true (boolean) - 返回数据的情况
+
+## Coordinate (Sheet Identify) - 操作区域坐标对象
++ coordinate (Coordinate properties) - 选中区域坐标
+
+## Coordinate properties (object) - 操作区域坐标属性列表
++ startCol:1(number) - 选中区域开始列号
++ startRow:1(number) - 选中区域开始行号
++ endCol:1(number) - 选中区域结束列号
++ endRow:1(number) - 选中区域结束行号
+    
+## Orignal Coordinate (object) - 不管最终选择区域落在什么位置, 这个信息都是 鼠标第一次指定的坐标值
++ orignalCol: 4 (number) - 列坐标点
++ orignalRow: 6 (number) - 行坐标点
