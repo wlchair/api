@@ -62,61 +62,60 @@ HOST: http://www.fn.com
 
 ## Rows Opration [/row/{actionType}]
 
-    行操作，插入，删除，行高调整
+    行操作，插入，删除，隐藏，显示，行高调整
     
 + Parameters
     + actionType: `plus` (string) - 动作类型
         + Members
             + `plus`
             + `reduce`
+            + `hide`
+            + `show`
 
-+ Attributes (Sheet Identify)
-    + row: 1(number) - 行号
-    
 ### Insert Or Delete [POST]
 
 + Request (application/json)
-
-    + Attributes (Rows Opration)
+    + Attributes (Row Number)
     
 + Response 200
 
 ## adjust Row Height [POST /row/adjust]
     行高调整
 + Request (application/json)
-
-    + Attributes
+    + Attributes (Row Number)
         + offset: `87`(number) - 调整后的值,最小值为5px
     
 + Response 200
 
 ## Cols Opration [/col/{actionType}]
 
+    列操作，插入，删除，隐藏，显示，调整
+    
 + Parameters
     + actionType: `plus` (string) - 动作类型
         + Members
             + `plus`
             + `reduce`
-
-+ Attributes (Sheet Identify)
-    + col: 1(number) - 列号
+            + `hide`
+            + `show`
 
 ### Insert or Delete [POST]
     
 + Request (application/json)
-
-    + Attributes (Cols Opration)
+    + Attributes (Col Number)
     
 + Response 200
 
 ## adjust Col Width [POST /col/adjust]
-    行高调整
-+ Request (application/json)
 
-    + Attributes (Cols Opration)
+    列宽调整
+    
++ Request (application/json)
+    + Attributes (Col Number)
         + offset: `87`(number) - 调整后的值,最小值为5px
     
 + Response 200
+
 
 # Group Opration Cells
 
@@ -397,6 +396,12 @@ HOST: http://www.fn.com
 + returncode: 200 (number) - http的编码
 + returndata: true (boolean) - 返回数据的情况
 
+## Col Number (Sheet Identify)
++ col: 1(number) - 列号
+
+## Row Number (Sheet Identify)
++ row: 1(number) - 行号
+        
 ## Coordinate (Sheet Identify) - 操作区域坐标对象
 + coordinate (Coordinate properties) - 选中区域坐标
 
