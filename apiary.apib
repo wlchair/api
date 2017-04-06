@@ -302,7 +302,7 @@ HOST: http://www.fn.com
 + Request (application/json)
     + Attributes (Coordinate)
         + color: `#000` (string) - 编码遵循RGB的规则编码
-        
+    
 + Response 200
 
 # Group Table Opration
@@ -320,7 +320,9 @@ HOST: http://www.fn.com
             "info":""
         }
 
-## Table Paste [/paste]
+# Group Sheet Opration
+
+## Table Paste [/sheet/paste]
 
 + Attributes (object)
     + col: 4 (number) - 粘贴时列坐标点
@@ -336,7 +338,7 @@ HOST: http://www.fn.com
     + Attributes (object)
         + isLegal: true(boolean) - 是否合法
 
-## Table Cut [/{actionType}]
+## Table Cut [/sheet/{actionType}]
 
 + Parameters
     + actionType: `cut`(string)
@@ -356,7 +358,7 @@ HOST: http://www.fn.com
         
 + Response 200
 
-## Frozen View [/frozen]
+## Frozen View [/sheet/frozen]
 
 + Attributes (Orignal Coordinate)
     + fnId: `1`(string) - 32为UUID
@@ -372,16 +374,15 @@ HOST: http://www.fn.com
         
 + Response 200
 
-# Group Sheet Opration
 
-## Undo [/undo]
+## Undo [/sheet/undo]
 
 ### Undo Oprtaion [GET]
     后退操作
 
 + Response 200
 
-## Redo [/redo]
+## Redo [/sheet/redo]
     前进操作
 ### Redo Opration [GET]
 
