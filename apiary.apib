@@ -15,16 +15,15 @@ HOST: http://www.fn.com
 
 ### 全局变量
 
-> `SPREADSHEET_AUTHENTIC_KEY`: 当前页面的唯一`FNID`, 不管是新建或更新表
-> `SPREADSHEET_BUILD_STATE`: 当前表的状态，
-> 新建或者更新，如果是更新表需要发起请求数据内容的操作
+> - `SPREADSHEET_AUTHENTIC_KEY`: 当前页面的唯一`FNID`, 不管是新建或更新表
+> - `SPREADSHEET_BUILD_STATE`: 当前表的状态，新建或者更新，如果是更新表需要发起请求数据内容的操作
 
 ### REST命名规则
 
 > `url`的组成结构： `{根目录}/{模块}/{操作- ?子操作}` 
 > 模块有4中类型，`Table`,`Sheet`,`Row|Col`,`Cell`
 > 操作根据具体层级关系递进，中间用 `-` 间隔
->>如 设置字体颜色，`http://www.fn.com/cell/font-color`
+>> 如 设置字体颜色，`http://www.fn.com/cell/font-color`
 
 ### 文档缺陷
 
@@ -54,7 +53,7 @@ HOST: http://www.fn.com
 ### 困难解决记录
 
 > - optional 和 required的区别，和作用
->>optional后面必须跟Member成员
+>> optional后面必须跟Member成员
 >> required是必须参数，不能选择
 >
 > - 怎么进行值传递，参数变量
