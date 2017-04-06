@@ -46,17 +46,18 @@ HOST: http://www.fn.com
 >>```
 
 ### 留存的疑问
+
+> - position的参数都是什么意思？
+> - 冻结操作，在还原时有bug
+
+### 困难解决记录
+
 > - optional 和 required的区别，和作用
 >>optional后面必须跟Member成员
 >> required是必须参数，不能选择
 >
 > - 怎么进行值传递，参数变量
 >>API的point功能可以实现
->
-> - 功能，外边粘进来，参数的意义都是什么？
-> - position的参数都是什么意思？
-> - 缺少openexcel和addrow|addcol操作
-> - 冻结操作，在还原时有bug
 
 # Group Opration Row or Col
 
@@ -85,6 +86,16 @@ HOST: http://www.fn.com
     + Attributes (Row Number)
         + offset: `87`(number) - 调整后的值,最小值为5px
     
++ Response 200
+
+## batch add Row [POST /row/plus-batch]
+    
+    批量增加列
+    
++ Request (application/json)
+    + Attributes
+        + num: 30(number) - 增加的数量
+
 + Response 200
 
 ## Cols Opration [/col/{actionType}]
@@ -116,6 +127,16 @@ HOST: http://www.fn.com
     
 + Response 200
 
+## batch add Col [POST /col/plus-batch]
+    
+    批量增加列
+    
++ Request (application/json)
+    + Attributes
+        + num: 30(number) - 增加的数量
+
++ Response 200
+    
 
 # Group Opration Cells
 
