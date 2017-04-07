@@ -176,6 +176,16 @@ HOST: http://www.fn.com
 
 + Response 200
 
+## Set Background [/cell/bg]
+
+### Setting Background Color [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + color: `#000` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
+    
++ Response 200
+
 # Group Cell Data Opration
 
     针对单元格的内容处理的操作，有内容时才有效果
@@ -245,14 +255,6 @@ HOST: http://www.fn.com
 + Request (application/json)
     + Attributes (Coordinate)
 
-+ Response 200
-
-## Set Background [/cell/bg]
-
-+ Request (application/json)
-    + Attributes (Coordinate)
-        + color: `#000` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
-    
 + Response 200
 
 ## Add or Update Comments [/cell/comment-plus]
