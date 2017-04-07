@@ -140,6 +140,8 @@ HOST: http://www.fn.com
 
 # Group Opration Cells
 
+    针对单元格的处理，即使没有内容也有效果
+    
 ## Merge or Split [/cell/{actionType}]
 
 + Parameters
@@ -174,6 +176,10 @@ HOST: http://www.fn.com
 
 + Response 200
 
+# Group Cell Data Opration
+
+    针对单元格的内容处理的操作，有内容时才有效果
+
 ## Align transverse [/cell/align-landscape]
 
 ### Set transverse Style [POST]
@@ -201,9 +207,9 @@ HOST: http://www.fn.com
 + Response 200
 
 
-## Delete Cells [/cell/reduce]
+## Clear Cells [/cell/clean]
 
-    用户可以通过操作，直接删除单元格的所有内容和格式，等于删除了整个单元格
+    用户可以通过操作，直接删除单元格的所有内容
 
 ### Delete Cells All Info [POST]
 
@@ -233,9 +239,7 @@ HOST: http://www.fn.com
 + Response 200
 
 
-# Group Cell Data Opration
 
-    针对单元格里面的处理的操作，修改内容，给内容加上注释
 
 ## Content [/cell/content]
 
