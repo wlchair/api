@@ -73,14 +73,14 @@ HOST: http://www.fn.com
             + `hide`
             + `show`
 
-### Insert Or Delete [POST]
+### Single Insert or Delete Row [POST]
 
 + Request (application/json)
     + Attributes (Row Number)
     
 + Response 200
 
-## adjust Row Height [POST /row/adjust]
+## adjust Single Row Height [POST /row/adjust]
     行高调整
 + Request (application/json)
     + Attributes (Row Number)
@@ -88,7 +88,7 @@ HOST: http://www.fn.com
     
 + Response 200
 
-## batch add Row [POST /row/plus-batch]
+## Batch Add Rows [POST /row/plus-batch]
     
     批量增加列
     
@@ -110,14 +110,14 @@ HOST: http://www.fn.com
             + `hide`
             + `show`
 
-### Insert or Delete [POST]
+### Single Insert or Delete Col [POST]
     
 + Request (application/json)
     + Attributes (Col Number)
     
 + Response 200
 
-## adjust Col Width [POST /col/adjust]
+## adjust Single Col Width [POST /col/adjust]
 
     列宽调整
     
@@ -127,7 +127,7 @@ HOST: http://www.fn.com
     
 + Response 200
 
-## batch add Col [POST /col/plus-batch]
+## Batch Add Cols [POST /col/plus-batch]
     
     批量增加列
     
