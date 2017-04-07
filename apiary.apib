@@ -206,18 +206,6 @@ HOST: http://www.fn.com
                 + `bottom`
 + Response 200
 
-
-## Clear Cells [/cell/clean]
-
-    用户可以通过操作，直接删除单元格的所有内容
-
-### Delete Cells All Info [POST]
-
-+ Request (application/json)
-    + Attributes (Coordinate)
-
-+ Response 200
-
 ## Format Cells Type [/cell/format]
 
     单元格的类型设置
@@ -238,10 +226,7 @@ HOST: http://www.fn.com
 
 + Response 200
 
-
-
-
-## Content [/cell/content]
+## Set Content [/cell/content]
 
 ### Setting Data Content [POST]
 
@@ -249,6 +234,25 @@ HOST: http://www.fn.com
     + Attributes (Coordinate)
         + content: `<script>console.log("1")</script>`(string) - 输入的内容，内容需要经过转码的，防止代码攻击
 
++ Response 200
+
+## Clear Content [/cell/clean]
+
+    用户可以通过操作，直接删除单元格的所有内容
+
+### Delete Cells All Info [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+
++ Response 200
+
+## Set Background [/cell/bg]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + color: `#000` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
+    
 + Response 200
 
 ## Add or Update Comments [/cell/comment-plus]
