@@ -80,7 +80,7 @@ HOST: http://www.fn.com
     
 + Response 200
 
-## adjust Single Row Height [POST /row/adjust]
+## Adjust Single Row Height [POST /row/adjust]
     行高调整
 + Request (application/json)
     + Attributes (Row Number)
@@ -117,7 +117,7 @@ HOST: http://www.fn.com
     
 + Response 200
 
-## adjust Single Col Width [POST /col/adjust]
+## Adjust Single Col Width [POST /col/adjust]
 
     列宽调整
     
@@ -393,7 +393,6 @@ HOST: http://www.fn.com
 ## Frozen View [/sheet/frozen]
 
 + Attributes (Orignal Coordinate)
-    + fnId: `1`(string) - 32为UUID
     + viewRow: 45(number) - 冻结时，用户可以看到范围，行编号
     + viewCol: 0 (number) - 冻结时，用户看见的范围，列编号
 
@@ -418,6 +417,19 @@ HOST: http://www.fn.com
     前进操作
 ### Redo Opration [GET]
 
++ Response 200
+
+## Batch Load Area Information [/sheet/area]
+
+### Load Area
+
++ Request (application/json)
+    + Attributes (object)
+        + top: 1117 (number) - 请求区域的顶部像素
+        + bottom: 1537 (number) - 低部
+        + left: 0 - 左边
+        + right: 500 - 右边
+        
 + Response 200
 
 # Data Structures
