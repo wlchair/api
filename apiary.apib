@@ -339,17 +339,17 @@ HOST: http://www.fn.com
 
 # Group Table Opration
 
-## Table Reload [/reload/{fnid}]
+## Table Reload [/reload]
 
-+ Parameters
-    + fnid: `ce1ef7b6-d338-4784-b87b-14bf33c1a040` - 32位uuid
+### Reload All Info [POST]
 
-### Reload All Info [GET]
++ Request (application/json)
+    + Attributes (Area px Info)
 
 + Response 200 (application/json)
     
         {
-            "info":""
+            "info":"这部分model结构有很多参数还不清楚，而且json结构层次太多，暂时不显示"
         }
 
 # Group Sheet Opration
@@ -387,7 +387,6 @@ HOST: http://www.fn.com
         + orignal (Coordinate properties) - 数据原来的位置
         + target (Orignal Coordinate)
         
-        
 + Response 200
 
 ## Frozen View [/sheet/frozen]
@@ -413,13 +412,17 @@ HOST: http://www.fn.com
 
 ## Undo [/sheet/undo]
 
-### Undo Oprtaion [GET]
     后退操作
+    
+### Undo Oprtaion [GET]
+    
 
 + Response 200
 
 ## Redo [/sheet/redo]
+
     前进操作
+    
 ### Redo Opration [GET]
 
 + Response 200
@@ -429,13 +432,13 @@ HOST: http://www.fn.com
 ### Load Area
 
 + Request (application/json)
-    + Attributes (object)
-        + top: 1117 (number) - 请求区域的顶部像素
-        + bottom: 1537 (number) - 低部
-        + left: 0 - 左边
-        + right: 500 - 右边
+    + Attributes (Area px Info)
         
-+ Response 200
++ Response 200 (application/json)
+
+        {
+            "info":"这部分model结构有很多参数还不清楚，而且json结构层次太多，暂时不显示"
+        }
 
 # Data Structures
 
@@ -451,6 +454,12 @@ HOST: http://www.fn.com
 
 ## Row Number (Sheet Identify)
 + row: 1(number) - 行号
+
+## Area px Info (object)
++ top: 1117 (number) - 请求区域的顶部像素
++ bottom: 1537 (number) - 低部
++ left: 0 - 左边
++ right: 500 - 右边
         
 ## Coordinate (Sheet Identify) - 操作区域坐标对象
 + coordinate (Coordinate properties) - 选中区域坐标
