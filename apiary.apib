@@ -176,14 +176,29 @@ HOST: http://www.fn.com
 
 + Response 200
 
-## Set Background [/cell/bg]
-
-### Setting Background Color [POST]
+## Set Single Background [/cell/bg]
+    
+    单个单元格背景颜色
+    
+### Cell Background Color [POST]
 
 + Request (application/json)
     + Attributes (Coordinate)
         + color: `#000` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
     
++ Response 200
+
+## Set Batch Background [/cell/bg-batch]
+    
+    批量设置单元格背景颜色
+    
+### Cell Background Color [POST]
+
++ Request (application/json)
+    + Attribute (Sheet Identify)
+        + coordinate (array[Coordinate properties])
+        + color: `#000` - RGB编码颜色
+
 + Response 200
 
 # Group Cell Data Opration
@@ -313,7 +328,7 @@ HOST: http://www.fn.com
 
 + Request (application/json)
     + Attributes (Coordinate)
-        + weight: 700 (number) - 字体默认是700，其余选项是枚举类型从100-900
+        + weight: false (boolean) - 默认非粗体，true是粗体
         
 + Response 200
 
