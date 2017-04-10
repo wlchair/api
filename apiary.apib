@@ -416,18 +416,20 @@ HOST: http://www.fn.com
 
 ## Frozen View [/sheet/frozen]
 
-+ Attributes (Orignal Coordinate)
-    + viewRow: 45(number) - 冻结时，用户可以看到范围，行编号
-    + viewCol: 0 (number) - 冻结时，用户看见的范围，列编号
+
 
 ### Frozen Position [POST]
 
     不管冻结怎么冻结，只需要把坐标传给后台就行了
     
 + Request (application/json)
-    + Attributes (Frozen View)
+    + Attributes (Orignal Coordinate)
+        + viewRow: 45(number) - 冻结时，用户可以看到范围，行编号
+        + viewCol: 0 (number) - 冻结时，用户看见的范围，列编号
         
 + Response 200
+
+## Unfrozen View [/sheet/unfrozen]
 
 ### UnFrozen Position [GET]
 
