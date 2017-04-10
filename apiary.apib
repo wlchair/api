@@ -205,7 +205,17 @@ HOST: http://www.fn.com
 
     针对单元格的内容处理的操作，有内容时才有效果
 
-## Align transverse [/cell/align-landscape]
+## Automatic Wrap [/cell/wordwrap]
+
+### Set Text Auto Wrap [POST]
+
++ Request (application/json)
+    + Attributes (Coordinate)
+        + auto: false (boolean) - 默认不是自动换行，true为自动换行
+
++ Response 200
+
+## Align Transverse [/cell/align-landscape]
 
 ### Set transverse Style [POST]
 
@@ -218,7 +228,7 @@ HOST: http://www.fn.com
                 + `right`
 + Response 200
 
-## Align vertically [/cell/align-portrait]
+## Align Vertically [/cell/align-portrait]
 
 ### Set vertically Style [POST]
 
