@@ -4,8 +4,8 @@ node_js:
 before_install:
  - npm install -g dredd
 
- script:
+script:
  - dredd
- cache:
+cache:
    directories:
    - node_modules
