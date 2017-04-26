@@ -76,7 +76,9 @@ HOST: http://www.fn.com
 ### Single Insert or Delete Row [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
             
     + Attributes (Row Number)
     
@@ -95,7 +97,10 @@ HOST: http://www.fn.com
     批量增加列
     
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes
         + num: 30(number) - 增加的数量
 
@@ -116,7 +121,10 @@ HOST: http://www.fn.com
 ### Single Insert or Delete Col [POST]
     
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Col Number)
     
 + Response 200
@@ -126,7 +134,10 @@ HOST: http://www.fn.com
     列宽调整
     
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Col Number)
         + offset: `87`(number) - 调整后的值,最小值为5px
     
@@ -137,7 +148,10 @@ HOST: http://www.fn.com
     批量增加列
     
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes
         + num: 30(number) - 增加的数量
 
@@ -159,7 +173,9 @@ HOST: http://www.fn.com
 ### Merge or Split Cells [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
     
     + Attributes (Coordinate)
 
@@ -170,7 +186,10 @@ HOST: http://www.fn.com
 ### Set Borders Style [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + direction: `top` (enum[string])
             + Members
@@ -191,7 +210,10 @@ HOST: http://www.fn.com
 ### Cell Background Color [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + color: `#000` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
     
@@ -204,7 +226,10 @@ HOST: http://www.fn.com
 ### Cell Background Color [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attribute (Sheet Identify)
         + coordinate (array[Coordinate properties])
         + color: `#000` - RGB编码颜色
@@ -220,7 +245,10 @@ HOST: http://www.fn.com
 ### Set Text Auto Wrap [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + auto: false (boolean) - 默认不是自动换行，true为自动换行
 
@@ -231,7 +259,10 @@ HOST: http://www.fn.com
 ### Set transverse Style [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + align: `left` (enum[string])
             + Members
@@ -245,7 +276,10 @@ HOST: http://www.fn.com
 ### Set vertically Style [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + align: `top` (enum[string])
             + Members
@@ -261,7 +295,10 @@ HOST: http://www.fn.com
 ### Setting Cells Type [POST]
     
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + format:`routine`(enum[string]) - 常规类型
             + Members
@@ -280,7 +317,10 @@ HOST: http://www.fn.com
 ### Setting Data Content [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + content: `<script>console.log("1")</script>`(string) - 输入的内容，内容需要经过转码的，防止代码攻击
 
@@ -293,7 +333,10 @@ HOST: http://www.fn.com
 ### Delete Cells All Info [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
 
 + Response 200
@@ -303,7 +346,10 @@ HOST: http://www.fn.com
 ### Setting Data Comments for explain [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + comment: `<script>console.log("1")</script>`(string, required) - 输入的内容，内容需要经过转码的，防止代码攻击
 
@@ -314,7 +360,10 @@ HOST: http://www.fn.com
 ### Delete Data Comments [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
 
 + Response 200
@@ -328,7 +377,10 @@ HOST: http://www.fn.com
 ### Update Font Size [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + size: `12`(number) - 字体默认是12pt，最大值48，都是以pt为单位
         
@@ -339,7 +391,10 @@ HOST: http://www.fn.com
 ### Update Font Family [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + family: `宋体`(enum[string]) - 字体默认是宋体，其余字体风格是枚举类型
             + Members
@@ -357,7 +412,10 @@ HOST: http://www.fn.com
 ### Update Font Weight [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + weight: false (boolean) - 默认非粗体，true是粗体
         
@@ -368,7 +426,10 @@ HOST: http://www.fn.com
 ### Update Font Italic [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + italic: false (boolean) - 默认为非斜体
         
@@ -379,7 +440,10 @@ HOST: http://www.fn.com
 ### Update Font Color [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Coordinate)
         + color: `#000` (string) - 编码遵循RGB的规则编码
     
@@ -392,7 +456,10 @@ HOST: http://www.fn.com
 ### Reload All Info [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Area px Info)
 
 + Response 200 (application/json;charset=utf-8)
@@ -413,7 +480,10 @@ HOST: http://www.fn.com
 ### Paste All Info to Any Where [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (array[Table Paste])
         
 + Response 200
@@ -433,7 +503,10 @@ HOST: http://www.fn.com
 ### Cut or Copy Info to Any Where [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (object)
         + orignal (Coordinate properties) - 数据原来的位置
         + target (Orignal Coordinate)
@@ -447,7 +520,10 @@ HOST: http://www.fn.com
     不管冻结怎么冻结，只需要把坐标传给后台就行了
     
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+    
     + Attributes (Orignal Coordinate)
         + viewRow: 45(number) - 冻结时，用户可以看到范围，行编号
         + viewCol: 0 (number) - 冻结时，用户看见的范围，列编号
@@ -461,7 +537,9 @@ HOST: http://www.fn.com
     解除冻结视图
     
 + Request
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
 
 + Response 200
 
@@ -472,7 +550,9 @@ HOST: http://www.fn.com
 ### Undo Oprtaion [GET]
 
 + Request
-    + Headers (Common Headers)    
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
 
 + Response 200
 
@@ -483,7 +563,9 @@ HOST: http://www.fn.com
 ### Redo Opration [GET]
 
 + Request
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
 
 + Response 200
 
@@ -492,7 +574,10 @@ HOST: http://www.fn.com
 ### Load Area Information [POST]
 
 + Request (application/json)
-    + Headers (Common Headers)
+    + Headers
+    
+            excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
+        
     + Attributes (Area px Info)
         
 + Response 200 (application/json;charset=utf-8)
@@ -534,6 +619,3 @@ HOST: http://www.fn.com
 ## Orignal Coordinate (object) - 不管最终选择区域落在什么位置, 这个信息都是 鼠标第一次指定的坐标值
 + orignalCol: 4 (number) - 列坐标点
 + orignalRow: 6 (number) - 行坐标点
-
-## Common Headers
-+ excelId: 5d34a0ae-afbe-4b39-adf2-251988374a50
