@@ -5,7 +5,8 @@ before_install:
  - npm install -g dredd
 
 script:
- - dredd apiary.apib http://excel-inc.acmr.com.cn:20064/$TRAVIS_BRANCH/ -j apiaryApiKey:029da612a1134e550900fa79013d3ad3 -j apiaryApiName:fengniao
+ - dredd
+
 cache:
    directories:
    - node_modules
