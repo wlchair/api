@@ -230,7 +230,7 @@ HOST: http://www.fn.com
     
             excelId: 0d1bc7da-2f01-4688-821a-93fbc945181b
     
-    + Attribute (Sheet Identify)
+    + Attribute (object)
         + coordinate (array[Coordinate properties])
         + color: `#000` - RGB编码颜色
 
@@ -472,11 +472,6 @@ HOST: http://www.fn.com
 
 ## Table Paste [/sheet/paste]
 
-+ Attributes (object)
-    + col: 4 (number) - 粘贴时列坐标点
-    + row: 6 (number) - 粘贴时行坐标点
-    + content:`this is paste content`(string) - 粘进来的内容
-
 ### Paste All Info to Any Where [POST]
 
 + Request (application/json)
@@ -484,7 +479,10 @@ HOST: http://www.fn.com
     
             excelId: 0d1bc7da-2f01-4688-821a-93fbc945181b
     
-    + Attributes (array[Table Paste])
+    + Attributes (Orignal Coordinate)
+        + colLen: 1 (number) - 粘贴数据的列数
+        + rowLen: 1 (number) - 粘贴数据的行数
+        + data (array[Paste Object]) - 被格式化完的数据
         
 + Response 200
     + Attributes (object)
@@ -589,7 +587,9 @@ HOST: http://www.fn.com
 # Data Structures
 
 ## Sheet Identify (object) - 单个sheet的ID标识
+```
 + sheetId: `1` (string) - 字符串类型的sheetId，自增的整数
+```
 
 ## Routine (object) - 正常的返回值
 + returncode: 200 (number) - http的编码
@@ -603,7 +603,7 @@ HOST: http://www.fn.com
 
 ## Area px Info (object)
 + top: 1117 (number) - 请求区域的顶部像素
-+ bottom: 1537 (number) - 低部
++ bottom: 1537 (number) - 底部
 + left: 0 (number) - 左边
 + right: 500 (number) - 右边
         
@@ -616,6 +616,12 @@ HOST: http://www.fn.com
 + endCol:1(number) - 选中区域结束列号
 + endRow:1(number) - 选中区域结束行号
     
-## Orignal Coordinate (object) - 不管最终选择区域落在什么位置, 这个信息都是 鼠标第一次指定的坐标值
+## Orignal Coordinate (object) - 不管最终选择区域落在什么位置, 这个就是鼠标第一次指定的坐标值
+    
 + orignalCol: 4 (number) - 列坐标点
 + orignalRow: 6 (number) - 行坐标点
+
+## Paste Object (object) - 粘贴进来的格式化对象
++ content: `example: paste content, testing, 123, <script> and 中文` - 粘贴的内容
++ col: 1
++ row: 3
