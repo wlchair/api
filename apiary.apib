@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://excel-inc.acmr.com.cn:20064/master/
+HOST: http://excel-inc.acmr.com.cn:20064/deploy/
 
 # Interaction API of FN
 
@@ -462,7 +462,7 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
     
             excelId: 0d1bc7da-2f01-4688-821a-93fbc945181b
     
-    + Attributes (Orignal Coordinate)
+    + Attributes (Operation Coordinate)
         + colLen: 1 (number) - 粘贴数据的列数
         + rowLen: 1 (number) - 粘贴数据的行数
         + data (array[Paste Object]) - 被格式化完的数据
@@ -488,12 +488,12 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
     
             excelId: 0d1bc7da-2f01-4688-821a-93fbc945181b
     
-    + Attributes (object)
+    + Attributes
         + orignal (Coordinate properties) - 数据原来的位置
-        + target (Orignal Coordinate)
+        + target (Operation Coordinate)
         
 + Response 200
-    + Attributes (object)
+    + Attributes
         + isLegal: true(boolean) - 是否合法
 
 ## Frozen View [/sheet/frozen]
@@ -507,7 +507,7 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
     
             excelId: 0d1bc7da-2f01-4688-821a-93fbc945181b
     
-    + Attributes (Orignal Coordinate)
+    + Attributes (Operation Coordinate)
         + viewRow: 45(number) - 冻结时，用户可以看到范围，行编号
         + viewCol: 0 (number) - 冻结时，用户看见的范围，列编号
         
@@ -601,10 +601,10 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 + endCol:1(number) - 选中区域结束列号
 + endRow:1(number) - 选中区域结束行号
     
-## Orignal Coordinate (object) - 不管最终选择区域落在什么位置, 这个就是鼠标第一次指定的坐标值
+## Operation Coordinate (object) - 不管是原始操作位还是选择区域为，传给后台知识需要操作的坐标
     
-+ orignalCol: 4 (number) - 列坐标点
-+ orignalRow: 6 (number) - 行坐标点
++ oprCol: 4 (number) - 列坐标点
++ oprRow: 6 (number) - 行坐标点
 
 ## Paste Object (object) - 粘贴进来的格式化对象
 + content: `example: paste content, testing, 123, <script> and 中文` - 粘贴的内容
