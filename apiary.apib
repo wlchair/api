@@ -467,9 +467,10 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
         + rowLen: 1 (number) - 粘贴数据的行数
         + pasteData (array[Paste Object]) - 被格式化完的数据
         
-+ Response 200
-    + Attributes (object)
++ Response 200 (application/json;charset=utf-8)
+    + Attributes
         + isLegal: true(boolean) - 是否合法
+    
 
 ## Table Cut & Copy [/sheet/{actionType}]
 
@@ -492,7 +493,7 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
         + orignal (Coordinate properties) - 数据原来的位置
         + target (Operation Coordinate)
         
-+ Response 200
++ Response 200 (application/json;charset=utf-8)
     + Attributes
         + isLegal: true(boolean) - 是否合法
 
