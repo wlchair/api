@@ -513,16 +513,16 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 ### Frozen Position [POST]
 
-    不管冻结怎么冻结，只需要把坐标传给后台就行了
+    在冻结首行、列时，位置会根据不同的情况，用`-1`代表
     
 + Request (application/json)
     + Headers
     
             excelId: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Operation Coordinate)
-        + viewRow: 45(number) - 冻结时，用户可以看到范围，行编号
-        + viewCol: 0 (number) - 冻结时，用户看见的范围，列编号
+    + Attributes (Operation Coordinate) 
+        + viewRow: 2(number) - 冻结时，用户可以看到范围，行编号
+        + viewCol: 2 (number) - 冻结时，用户看见的范围，列编号
         
 + Response 200
 
