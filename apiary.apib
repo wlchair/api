@@ -593,15 +593,11 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 + sheetId: `1` (string) - 字符串类型的sheetId，自增的整数
 -->
 
-## Routine (object) - 正常的返回值
-+ returncode: 200 (number) - http的编码
-+ returndata: true (boolean) - 返回数据的情况
-
-## Col Number (Sheet Identify)
+## Col Number
 + col: 1(number) - 列号
 
-## Row Number (Sheet Identify)
-+ row: 1(number) - 行号
+## Row Number
++ row: 3(number) - 行号
 
 ## Area px Info (object)
 + top: 1117 (number) - 请求区域的顶部像素
@@ -613,17 +609,17 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 + coordinate (Coordinate properties) - 选中区域坐标
 
 ## Coordinate properties (object) - 操作区域坐标属性列表
-+ startCol:1(number) - 选中区域开始列号
-+ startRow:1(number) - 选中区域开始行号
-+ endCol:1(number) - 选中区域结束列号
-+ endRow:1(number) - 选中区域结束行号
++ startCol: 1(number) - 选中区域开始列号
++ startRow: 1(number) - 选中区域开始行号
++ endCol: 1(number) - 选中区域结束列号
++ endRow: 1(number) - 选中区域结束行号
     
-## Operation Coordinate (object) - 不管是原始操作位还是选择区域，传给后台需要操作的坐标
+## Operation Coordinate (object) - 不管是原始操作位还是选择区域，传递时只需要给出具体以哪个点为操作点
     
 + oprCol: 4 (number) - 列坐标点
 + oprRow: 6 (number) - 行坐标点
 
-## Paste Object (object) - 粘贴进来的格式化对象
+## Paste Object (Col Number) - 粘贴进来的格式化对象
 + content: `example: paste content, testing, 123, <script>alert('sql insert')</script> and 中文` - 粘贴的内容
-+ col: 1
-+ row: 3
++ row: 1 (number)
++ col: 3 (number)
