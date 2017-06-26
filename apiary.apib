@@ -216,19 +216,35 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
     
     单元格背景颜色
     
-### Cell Background Color [POST]
+### Single Background Color [POST]
 
 + Request (application/json)
     + Headers
     
             excelId: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes
-        + coordinate (array[Coordinate properties])
-        + color: `#000` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
+    + Attributes (Coordinate)
+        + color: `rgb(73, 68, 41)` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
     
 + Response 200
 
+## Set Multiple Background Color [/cell/bg-batch]
+
+    临时把批量设置背景颜色端口改bg-batch，统一端口:在做ctrl功能时
+    
+### Multiple Background Color [POST]
+
++ Request (application/json)
+    + Headers 
+        
+            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+    
+    + Attributes 
+        + coordinate (array[Coordinate properties])
+        + color: `rgb(73, 68, 41)` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
+        
++ Response 200        
+        
 # Group Cell Data Opration
 
     针对单元格的内容处理的操作，有内容时才有效果
