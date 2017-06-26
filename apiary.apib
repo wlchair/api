@@ -212,9 +212,9 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 + Response 200
 
-## Set Single Background [/cell/bg]
+## Set Background [/cell/bg]
     
-    单个单元格背景颜色
+    单元格背景颜色
     
 ### Cell Background Color [POST]
 
@@ -223,7 +223,8 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
     
             excelId: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes
+        + coordinate (array[Coordinate properties])
         + color: `#000` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
     
 + Response 200
@@ -595,7 +596,8 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 # Data Structures
 
 ## Sheet Identify (object) - 单个sheet的ID标识
-<!--暂时弃用
+<!--
+暂时弃用
 + sheetId: `1` (string) - 字符串类型的sheetId，自增的整数
 -->
 
