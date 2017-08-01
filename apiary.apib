@@ -461,6 +461,21 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
     
 + Response 200
 
+## Font Underline [/cell/font-underline]
+
+### Update Font Underline [POST]
+
++ Request (application/json)
+    + Headers
+    
+            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+        
+    + Attributes (Coordinate)
+        + underline: false (boolean) - 默认为没有下划线
+        
++ Response 200
+
+
 # Group Table Opration
 
 <!--
@@ -590,7 +605,7 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 
 <!--
-暂时弃用
+暂时弃
 ## Load Area By PX [/sheet/area]
 
 ### Load Area Information [POST]
