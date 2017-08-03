@@ -88,13 +88,16 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
     + Headers
     
             excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            step: 1
             
     + Attributes (Row Number)
     
 + Response 200
     
 ## Adjust Single Row Height [POST /row/adjust]
+
     行高调整
+    
 + Request (application/json)
     + Attributes (Row Number)
         + offset: `87`(number) - 调整后的值,最小值为5px
