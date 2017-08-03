@@ -380,6 +380,21 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 + Response 200
 
+## Delete Content [/cell/clean-data]
+
+### Delete Data Content [POST]
+
++ Request (application/json)
+    + Headers
+            
+            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            
+    + Attributes
+        + coordinate (array[Coordinate properties])
+    
++ Response 200
+
+
 # Group Cells Font Style Opration
 
     针对单元格内的字体的接口
@@ -471,7 +486,7 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
             excelId: 28b60797-8457-4410-8fac-db1161839cc7
         
     + Attributes (Coordinate)
-        + underline: false (boolean) - 默认为没有下划线
+        + underline: 1 (number) - 默认为没有下划线，1：单下划线，0：无
         
 + Response 200
 
