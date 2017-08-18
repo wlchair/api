@@ -246,7 +246,25 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
         + coordinate (array[Coordinate properties])
         + color: `rgb(73, 68, 41)` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
         
-+ Response 200        
++ Response 200 
+
+## Lock State [/cell/lock]
+
+    锁定单元格是否为保护状态
+    
+### Lock Cells Satatus [POST]
+
++ Request (application/json)
+    + Headers
+    
+            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            
+    + Attributes
+        + coordinate (array[Coordinate properties])
+        + lock: true (boolean) - 默认为锁定状态，用`true`代表，`false`为非锁定状态
+        
++ Response 200
+
         
 # Group Cell Data Opration
 
@@ -397,7 +415,6 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
     
 + Response 200
 
-
 # Group Cells Font Style Opration
 
     针对单元格内的字体的接口
@@ -539,7 +556,9 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 + Response 400
 
 ## Table Cut & Copy [/sheet/{actionType}]
-
+    
+    [同步操作]
+    
 + Parameters
     + actionType: `cut`(string)
         这个动作是剪切或者复制，这个动作的触发只能在excel出现，跟外部交互的操作都是粘贴操作，
@@ -584,9 +603,9 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 ## Unfrozen View [/sheet/unfrozen]
 
-### UnFrozen Position [GET]
-
     解除冻结视图
+
+### UnFrozen Position [GET]
     
 + Request
     + Headers
@@ -621,6 +640,27 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 + Response 200
 
+## Protect Sheet View [/sheet/protect]
+    
+    [同步操作]
+    保护工作表
+
+### Current View Protect Status [POST]
+
++ Request (application/json)
+    + Headers
+    
+            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+    
+    + Attributes
+        + protect: true (boolean) - 是否保护工作表，true是保护，false不保护
+        + passwd: `String` (string) - 解锁保存密码，（暂时传输明文），没有密码时，不传。密码位数限制，4-18位。
+        
++ Response 200 (application/json;charset=utf-8)
+    + Attributes
+        + isLegal: true (boolean) - 是否可以上锁 或 解锁 
+
++ Response 400
 
 <!--
 暂时弃
