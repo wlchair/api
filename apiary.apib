@@ -33,7 +33,7 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 ### 传递参数的意义解释
 
 > 交互阶段传入的坐标信息都是`sort`值，即：后台数据存储的行列索引值
-> 整行、列操作时，最大值用-1表示
+> 整行、列操作时，最大值: -1 表示
 >> 如：第五列
 >>```
 >> {
@@ -662,6 +662,25 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 + Response 400
 
+## Validate Cells Content & Rule [/sheet/validate]
+    
+    数据验证
+
+### Data Validate [POST]
+
++ Request (application/json)
+    + Headers
+    
+            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+    
+    + Attributes
+        + coordinate (array[Coordinate properties])
+        + rule (Vaildate Object)
+        
++ Response 200 
+
++ Response 400
+
 <!--
 暂时弃
 ## Load Area By PX [/sheet/area]
@@ -718,5 +737,10 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 ## Paste Object (Col Number) - 粘贴进来的格式化对象
 + content: `example: paste content, testing, 123, <script>alert('sql insert')</script> and 中文` - 粘贴的内容
-+ row: 1 (number)
-+ col: 3 (number)
++ row: 1 (number) - 相对于初始位置的距离
++ col: 3 (number) - 相对于初始位置的距离
+
+## Vaildate Object (object) - 数据验证对象
++ formula1: `min` (string) - 第一个数据值，可能不存在
++ formula2: `max` (string) - 第二个数据值，可能不存在
++ validationType: 4 (number) - 不同的数字代表不同的数
