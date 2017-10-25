@@ -342,37 +342,7 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 + Response 200
 
-## Set Content [/cell/content]
 
-### Setting Data Content [POST]
-
-+ Request (application/json)
-    + Headers
-    
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
-    
-    + Attributes (Coordinate)
-        + content: `<script>console.log("1")</script>`(string) - 输入的内容，内容需要经过转码的，防止代码攻击
-
-+ Response 200
-
-<!--
-暂时弃用
-## Clear Content [/cell/clean]
-
-    用户可以通过操作，直接删除单元格的所有内容
-
-### Delete Cells All Info [POST]
-
-+ Request (application/json)
-    + Headers
-    
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
-    
-    + Attributes (Coordinate)
-
-+ Response 200
--->
 
 ## Add or Update Comments [/cell/comment-plus]
 
@@ -401,7 +371,21 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 + Response 200
 
-## Clean Content [/cell/clean-data]
+## Set Content [/cell/data-set]
+
+### Setting Data Content [POST]
+
++ Request (application/json)
+    + Headers
+    
+            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+    
+    + Attributes (Coordinate)
+        + content: `<script>console.log("1")</script>`(string) - 输入的内容，内容需要经过转码的，防止代码攻击
+
++ Response 200
+
+## Clean Content [/cell/data-clean]
 
 ### Clean Data Content [POST]
 
@@ -414,6 +398,21 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
         + coordinate (array[Coordinate properties])
     
 + Response 200
+
+## Options Content [/cell/data-options]
+
+### All Options For Current Cell [POST]
+
++ Request (application/json)
+    + Headers
+            
+            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            
+    + Attributes (Operation Coordinate)
+    
++ Response 200 (application/json;charset=utf-8)
+    + Attributes
+        + expResult: 1,2,4,5 (array) - 所有选项
 
 # Group Cells Font Style Opration
 
