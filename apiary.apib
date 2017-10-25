@@ -20,7 +20,7 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 ### REST命名规则
 
-> `url`的组成结构： `{根目录}/{模块}/{操作- ?子操作}` 
+> `url`的组成结构： `{根目录}/{模块}/{主操作- ?子操作}` 
 > 模块有4中类型，`Table`,`Sheet`,`Row|Col`,`Cell`
 > 操作根据具体层级关系递进，中间用 `-` 间隔
 >> 如 设置字体颜色，`http://www.fn.com/cell/font-color`
@@ -740,7 +740,12 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 + row: 1 (number) - 相对于初始位置的距离
 + col: 3 (number) - 相对于初始位置的距离
 
-## Vaildate Object (object) - 数据验证对象
-+ formula1: `min` (string) - 第一个数据值，可能不存在
-+ formula2: `max` (string) - 第二个数据值，可能不存在
-+ validationType: 4 (number) - 不同的数字代表不同的数
+## Vaildate Object (object) 
+
+ 数据验证对象，
+ 选择区域表示：${列名}${行名称}（左上）:${列名称}${行名称}（右下）
+ 当整行、列选择时，省略统一位置：${位置}:${位置}
+
++ formula1: `min` (string) - 可能不存在
++ formula2: `max` (string) - 可能不存在
++ validationType: 4 (number) - 数据类型
