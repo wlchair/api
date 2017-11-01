@@ -399,20 +399,6 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
     
 + Response 200
 
-## Options Content [/cell/data-options]
-
-### All Options For Current Cell [POST]
-
-+ Request (application/json)
-    + Headers
-            
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
-            
-    + Attributes (Operation Coordinate)
-    
-+ Response 200 (application/json;charset=utf-8)
-    + Attributes
-        + expResult: 1,2,4,5 (array) - 所有选项
 
 # Group Cells Font Style Opration
 
@@ -661,11 +647,11 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 + Response 400
 
-## Validate Cells Content & Rule [/sheet/validate]
+## Validate Cells Content & Rule [/sheet/validate-set]
     
-    数据验证
+    设置数据验证规则
 
-### Data Validate [POST]
+### Set Data Validate [POST]
 
 + Request (application/json)
     + Headers
@@ -679,6 +665,43 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 + Response 200 
 
 + Response 400
+
+## Rule Information [/sheet/validate-rule]
+
+    规则内容
+
+### Rule Information For Current Coordinate [POST]
+
++ Request (application/json)
+    + Headers
+            
+            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            
+    + Attributes (Operation Coordinate)
+    
++ Response 200 (application/json;charset=utf-8)
+    + Attributes
+        + rule (Vaildate Object)
+        + index: 1 (number) - 规则索引
+
+## Rule & Result Information  [/sheet/validate-full]
+
+    规则内容和数据源结果
+
+### All Options And Rule Information [POST]
+
++ Request (application/json)
+    + Headers
+            
+            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            
+    + Attributes (Operation Coordinate)
+    
++ Response 200 (application/json;charset=utf-8)
+    + Attributes
+        + rule (Vaildate Object)
+        + index: 1 (number) - 规则索引
+        + expResult: 1,2,4,5 (array) - 所有选项
 
 <!--
 暂时弃
@@ -739,11 +762,7 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 + row: 1 (number) - 相对于初始位置的距离
 + col: 3 (number) - 相对于初始位置的距离
 
-## Vaildate Object (object) 
-
- 数据验证对象，
- 选择区域表示：${列名}${行名称}（左上）:${列名称}${行名称}（右下）
- 当整行、列选择时，省略统一位置：${位置}:${位置}
+## Vaildate Object (object) - 数据验证对象，选择区域表示：${列名}${行名称}（左上）:${列名称}${行名称}（右下）当整行、列选择时，省略统一位置：${位置}:${位置}
 
 + formula1: `min` (string) - 可能不存在
 + formula2: `max` (string) - 可能不存在
