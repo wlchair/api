@@ -1,0 +1,72 @@
+{
+  "info": {
+    "name": "testing",
+    "_postman_id": "2b71f0a5-8a5b-4a2b-e01c-9dad625c80c7",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "9e194f46-9201-00ba-48a3-f0c355df0ba1",
+      "name": "create cell",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": "",
+        "description": null
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "b200459d-569b-cac5-53de-aa6f3ffe7596",
+      "name": "Format timestamp",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "var format = JSON.parse(responseBody).format;",
+              "",
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "tests[\"Formatted result is valid\"] = format === \"20\";",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "https://postman-echo.com/time/format?timestamp=2016-10-10&format=mm",
+          "protocol": "https",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "time",
+            "format"
+          ],
+          "query": [
+            {
+              "key": "timestamp",
+              "value": "2016-10-10",
+              "equals": true
+            },
+            {
+              "key": "format",
+              "value": "mm",
+              "equals": true
+            }
+          ]
+        },
+        "description": "A simple `GET` request to `/time/format` to convert the timestamp to any desired valid format.\n\nThis endpoint accepts `timestamp`, `locale`, `format`, and `strict` query parameters to construct the date time instance to check against.\n\nResponses are provided in JSON format, with a `format` key to indicate the result. The response code is `200` for valid query parameters, and `400` otherwise.\n\n```\n{\n  format: \"formatted-timestamp\"\n}\n```"
+      },
+      "response": []
+    }
+  ]
+}
