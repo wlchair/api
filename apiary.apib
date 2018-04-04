@@ -25,10 +25,6 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 > 操作根据具体层级关系递进，中间用 `-` 间隔
 >> 如 设置字体颜色，`http://www.fn.com/cell/font-color`
 
-### 文档缺陷
-
-> 由于文档没有实现`Headers`的重用
-> 所有我们在Mock时，自定在`Headers`里面指定`FN-Step`、`FN-ID`信息
 
 ### 传递参数的意义解释
 
@@ -52,21 +48,32 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 | 400           | 参数错误    | excelId或step参数缺失|
 
 > 以 `HTTP Status Code` 码为标准
+q
+### 请求类型
 
-### 留存的疑问
-
-> - position的参数都是什么意思？
-> - 冻结操作，在还原时有bug
-> - 没有传递变量的功能，如何解决？
-
-### 困难解决记录
-
-> - optional 和 required的区别，和作用
->> optional后面必须跟Member成员
->> required是必须参数，不能选择
+> - 多个之间没有任何关系，即：独立发送返回，无限制
+> - 需要后台做处理并，需要等待返回值，如：粘贴
+> - 操作页面上 **未知** 区域并，需要等待返回值，如：数据验证
 >
-> - 怎么进行值传递，参数变量
->>API的point功能可以实现
+> **后两种类型，请求必须等待数据返回后，才执行后续功能**
+
+<!--### 留存的疑问-->
+
+<!--> - position的参数都是什么意思？-->
+<!--> - 没有传递变量的功能，如何解决？-->
+
+<!--### 困难解决记录-->
+
+<!--> - optional 和 required的区别，和作用-->
+<!-->> optional后面必须跟Member成员-->
+<!-->> required是必须参数，不能选择-->
+<!-->-->
+<!--> - 怎么进行值传递，参数变量-->
+<!-->>API的point功能可以实现-->
+<!--### 文档缺陷-->
+
+<!--> 由于文档没有实现`Headers`的重用-->
+<!--> 所有我们在Mock时，自定在`Headers`里面指定`FN-Step`、`FN-ID`信息-->
 
 # Group Opration Row or Col
 
