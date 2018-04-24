@@ -15,15 +15,15 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 
 ### 全局变量
 
-> - `SPREADSHEET_AUTHENTIC_KEY`: 当前页面的唯一`FNID`, 不管是新建或更新表
-> - `SPREADSHEET_BUILD_STATE`: 当前表的状态，新建或者更新，如果是更新表需要发起请求数据内容的操作
+> - `SUNBEAM_AUTHENTIC_KEY`: 当前页面的唯一`SBMID`, 不管是新建或更新表
+> - 默认值: 列宽`72px`、行高`20px`
 
 ### REST命名规则
 
 > `url`的组成结构： `{根目录}/{模块}/{主操作- ?子操作}` 
-> 模块有4中类型，`Table`,`Sheet`,`Row|Col`,`Cell`
+> 模块有4中类型，`Book`,`Sheet`,`Row|Col`,`Cell`
 > 操作根据具体层级关系递进，中间用 `-` 间隔
->> 如 设置字体颜色，`http://www.fn.com/cell/font-color`
+>> 如 设置字体颜色，`http://www.sunbeam.com/cell/font-color`
 
 
 ### 传递参数的意义解释
@@ -110,21 +110,6 @@ q
     + Attributes (Row Number)
         + offset: `87`(number) - 调整后的值,最小值为5px
     
-+ Response 200
-
-## Batch Add Rows [POST /row/plus-batch]
-    
-    批量增加列
-    
-+ Request (application/json)
-
-    + Headers
-    
-            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
-    
-    + Attributes
-        + num: 30(number) - 增加的数量
-
 + Response 200
 
 ## Cols Opration [/col/{actionType}]
@@ -724,7 +709,9 @@ q
         + index: 1 (number) - 规则索引
         + expResult: 1,2,4,5 (array) - 所有选项
 
+
 ## Load Area By PX [/sheet/area]
+
 
 ### Load Area Information [POST]
 
@@ -814,7 +801,7 @@ q
             }
         
     + Schema
-            
+    
             {
                 type: "object",
                 properties: {
@@ -915,10 +902,11 @@ q
                     }
                 }
             }
-    
+
+
 # Group Table Opration
 
-## Table Reload [/reload]
+## Book Reload [/reload]
 
 ### Reload All Info [POST]
 
@@ -935,10 +923,139 @@ q
     + Body
             
             {
-                "info":"这部分model结构有很多参数还不清楚，而且json结构层次太多，暂时不显示"
+                name: "new book",
+                sheets: [{
+                    name: "new sheet",
+                    maxColAlias: 27,
+                    maxRowAlias: 101,
+                    maxColPixel: 1819,
+                    maxRowPixel: 1999,
+                    viewRowAlias: "1",
+                    viewColAlias: "1",
+                    cells: [{
+                        border: {
+                            all: false,
+                            bottom: false,
+                            left: false,
+                            none: false,
+                            outer: false,
+                            right: false,
+                            top: false
+                        },
+                        content: {
+                            alignCol: "bottom",
+                            alignRow: "left",
+                            bold: false,
+                            color: "rgb(0,0,0)",
+                            displayTexts: "",
+                            family: "SimSun",
+                            italic: false,
+                            size: 11,
+                            texts: "",
+                            underline: 0,
+                            wordWrap: false,
+                            type: "number",
+                            express: "###.#",
+                            background: "rgb(23,54,93)",
+                            locked: false
+                        },
+                        customProp: {
+                            highlight: false,
+                            comment: "mark contexts"
+                        },
+                        occupy: {
+                            row: ["6"],
+                            col: ["1"]
+                        }
+                    }],
+                    gridLineRow: [{
+                        alias: "26",
+                        hidden: false,
+                        sort: 25,
+                        left: 1750,
+                        width: 69,
+                        props: {
+                            border: {},
+                            content: {},
+                            customProp: {},
+                        }
+                    }],
+                    gridLineCol: [{
+                        alias: "56",
+                        height: 19,
+                        top: 1100,
+                        hidden: false,
+                        sort: 55,
+                        props: {
+                            border: {},
+                            content: {},
+                            customProp: {}
+                        }
+                    }],
+                    sort: 0,
+                    protect: false,
+                    validate: [{
+                        rule: {
+                            formula1: "3",
+                            formula2: "444",
+                            index: 1,
+                            type: 6
+                        },
+                        coordinates: [{
+                            startCol: 6,
+                            startRow: 1,
+                            endCol: 6,
+                            endRow: 1
+                        }]
+                    }],
+                    frozen: {
+                        colAlias: "5",
+                        rowAlias: "7"
+                    }
+                }]
             }
 
+    + Schema
     
+            {
+                type: "object",
+                properties: {
+                    sheets: {
+                        type: "array",
+                        items: {
+                            type: "object",
+                            description: "返回对象里的cells、gridLineCol、gridLineRow、validate内容和area请求一致"
+                            properties: {
+                                maxColAlias: {
+                                    type: "number",
+                                    description: "列别名目前的最大值"
+                                },
+                                maxColPixel: {
+                                    type: "number",
+                                    description: "当前表格最大的列像素值"
+                                },
+                                viewColAlias:{
+                                    type: "string",
+                                    description: "用户关闭页面时候，看到最上角坐标位置。作用： 数据定位还原、冻结。目前只在冻结用到"
+                                },
+                                sort: {
+                                    type: "numbner",
+                                    description: "当前sheet所在的索引位置，目前默认是0"
+                                },
+                                frozen: {
+                                    type: "object",
+                                    properties: {
+                                        colAlias: {
+                                            type: "string",
+                                            description: "冻结的列位置别名,如果只冻结行，列返回-1"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         
 
 # Data Structures
