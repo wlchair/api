@@ -769,6 +769,32 @@ q
                         content: {},
                         customProp: {},
                     }
+                }],
+                gridLineCol: [{
+                    alias: "56",
+                    height: 19,
+                    top: 1100,
+                    hidden: false,
+                    sort: 55,
+                    props: {
+                        border: {},
+                        content: {},
+                        customProp: {}
+                    }
+                }],
+                validate: [{
+                    rule: {
+                        formula1: "3",
+                        formula2: "444",
+                        index: 1,
+                        type: 6
+                    },
+                    coordinates: [{
+                        startCol: 6,
+                        startRow: 1,
+                        endCol: 6,
+                        endRow: 1
+                    }]
                 }]
             }
         
@@ -842,6 +868,32 @@ q
                                 props: {
                                     type: "object",
                                     description: "引用自cell的属性"
+                                }
+                            }
+                        }
+                    },
+                    validate: {
+                        type: "array",
+                        description: "数据验证对象也是根据位置判断，逐步的返回规则"
+                        items: {
+                            type: "object",
+                            properties: {
+                                rule: {
+                                    type: "object",
+                                    properties: {
+                                        formula1: {
+                                            type: "string",
+                                            description: "如果有一个值，就只返回formula1"
+                                        },
+                                        index: {
+                                            type: "number",
+                                            description: "这个作用忘了！！, 等后续补充"
+                                        },
+                                        type: {
+                                            type: "number",
+                                            description: "根据类型的不同，给出的枚举值"
+                                        }
+                                    }
                                 }
                             }
                         }
