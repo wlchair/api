@@ -76,6 +76,8 @@ q
 <!--> 所有我们在Mock时，自定在`Headers`里面指定`FN-Step`、`FN-ID`信息-->
 
 # Group Opration Row or Col
+    
+    行、列暂时不支持批量操作
 
 ## Rows Opration [/row/{actionType}]
 
@@ -151,25 +153,10 @@ q
     
 + Response 200
 
-## Batch Add Cols [POST /col/plus-batch]
-    
-    批量增加列
-    
-+ Request (application/json)
-
-    + Headers
-    
-            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
-    
-    + Attributes
-        + num: 30(number) - 增加的数量
-
-+ Response 200
-    
-
 # Group Opration Cells
 
-    针对单元格的处理，即使没有内容也有效果
+    > - 该部分针对单元格的处理（即：没有内容也有效果情况）
+    > - 单元格所有操作都要支持多选区域
     
 ## Merge or Split [/cell/{actionType}]
 
@@ -187,7 +174,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes
+        + coordinate (array[Coordinate properties])
 
 + Response 200
 
@@ -201,7 +189,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes
+        + coordinate (array[Coordinate properties])
         + direction: `top` (enum[string])
             + Members
                 + `top`
@@ -226,28 +215,11 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
-        + color: `rgb(73, 68, 41)` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
-    
-+ Response 200
-
-## Set Multiple Background Color [/cell/bg-batch]
-
-    临时把批量设置背景颜色端口改bg-batch，统一端口:在做ctrl功能时
-    
-### Multiple Background Color [POST]
-
-+ Request (application/json)
-
-    + Headers 
-        
-            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
-    
     + Attributes 
         + coordinate (array[Coordinate properties])
-        + color: `rgb(73, 68, 41)` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
-        
-+ Response 200 
+        + color: `rgb(73, 68, 41, 0)` (string) - 编码遵循RGBA的规则编码
+    
++ Response 200
 
 ## Lock State [/cell/lock]
 
@@ -282,7 +254,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes 
+        + coordinate (array[Coordinate properties])
         + auto: false (boolean) - 默认不是自动换行，true为自动换行
 
 + Response 200
@@ -297,7 +270,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes 
+        + coordinate (array[Coordinate properties])
         + align: `left` (enum[string])
             + Members
                 + `left`
@@ -315,7 +289,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes 
+        + coordinate (array[Coordinate properties])
         + align: `top` (enum[string])
             + Members
                 + `top`
@@ -335,7 +310,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes 
+        + coordinate (array[Coordinate properties])
         + format:`routine`(enum[string]) - 常规类型
             + Members
                 + `routine` - 常规类型
@@ -360,7 +336,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes
+        + coordinate (array[Coordinate properties])
         + comment: `<script>console.log("1")</script>`(string, required) - 输入的内容，内容需要经过转码的，防止代码攻击
 
 + Response 200
@@ -375,11 +352,14 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes 
+        + coordinate (array[Coordinate properties])
 
 + Response 200
 
 ## Set Content [/cell/data-set]
+
+    单元格写入内容
 
 ### Setting Data Content [POST]
 
@@ -395,6 +375,8 @@ q
 + Response 200
 
 ## Clean Content [/cell/data-clean]
+    
+    清除单元格内容
 
 ### Clean Data Content [POST]
 
@@ -424,7 +406,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes
+        + coordinate (array[Coordinate properties])
         + size: `12`(number) - 字体默认是12pt，最大值48，都是以pt为单位
         
 + Response 200
@@ -439,7 +422,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes 
+        + coordinate (array[Coordinate properties])
         + family: `宋体`(enum[string]) - 字体默认是宋体，其余字体风格是枚举类型
             + Members
                 + `宋体`
@@ -461,7 +445,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes
+        + coordinate (array[Coordinate properties])
         + weight: false (boolean) - 默认非粗体，true是粗体
         
 + Response 200
@@ -476,7 +461,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes
+        + coordinate (array[Coordinate properties])
         + italic: false (boolean) - 默认为非斜体
         
 + Response 200
@@ -491,7 +477,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Coordinate)
+    + Attributes
+        + coordinate (array[Coordinate properties])
         + color: `#000` (string) - 编码遵循RGB的规则编码
     
 + Response 200
@@ -506,7 +493,8 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
         
-    + Attributes (Coordinate)
+    + Attributes
+        + coordinate (array[Coordinate properties])
         + underline: 1 (number) - 默认为没有下划线，1：单下划线，0：无
         
 + Response 200
@@ -515,6 +503,8 @@ q
 # Group Sheet Opration
 
 ## Table Paste [/sheet/paste]
+
+    [同步操作]
 
 ### Paste All Info to Any Where [POST]
 
@@ -537,8 +527,6 @@ q
 + Response 400
 
 ## Table Cut & Copy [/sheet/{actionType}]
-    
-    [同步操作]
     
 + Parameters
     + actionType: `cut`(string)
@@ -579,7 +567,7 @@ q
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Operation Coordinate) 
-        + viewRow: 2(number) - 冻结时，用户可以看到范围，行编号
+        + viewRow: 2 (number) - 冻结时，用户可以看到范围，行编号
         + viewCol: 2 (number) - 冻结时，用户看见的范围，列编号
         
 + Response 200
@@ -628,8 +616,8 @@ q
 
 ## Protect Sheet View [/sheet/protect]
     
-    [同步操作]
-    保护工作表
+    > - 保护工作表
+    > - [同步操作]
 
 ### Current View Protect Status [POST]
 
@@ -712,6 +700,7 @@ q
 
 ## Load Area By PX [/sheet/area]
 
+    [同步操作]
 
 ### Load Area Information [POST]
 
@@ -742,7 +731,7 @@ q
                         alignCol: "bottom",
                         alignRow: "left",
                         bold: false,
-                        color: "rgb(0,0,0)",
+                        color: "rgba(0,0,0,1)",
                         displayTexts: "123.00",
                         family: "SimSun",
                         italic: false,
@@ -946,7 +935,7 @@ q
                             alignCol: "bottom",
                             alignRow: "left",
                             bold: false,
-                            color: "rgb(0,0,0)",
+                            color: "rgba(0,0,0,1)",
                             displayTexts: "",
                             family: "SimSun",
                             italic: false,
@@ -1092,7 +1081,7 @@ q
 + oprCol: 4 (number) - 列坐标点
 + oprRow: 6 (number) - 行坐标点
 
-## Paste Object (Col Number) - 粘贴进来的格式化对象
+## Paste Object(Col Number) - 粘贴进来的格式化对象
 + content: `example: paste content, testing, 123, <script>alert('sql insert')</script> and 中文` - 粘贴的内容
 + row: 1 (number) - 相对于初始位置的距离
 + col: 3 (number) - 相对于初始位置的距离
