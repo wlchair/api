@@ -92,6 +92,7 @@ q
 ### Single Insert or Delete Row [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -116,6 +117,7 @@ q
     批量增加列
     
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -140,6 +142,7 @@ q
 ### Single Insert or Delete Col [POST]
     
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -153,6 +156,7 @@ q
     列宽调整
     
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -167,6 +171,7 @@ q
     批量增加列
     
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -192,6 +197,7 @@ q
 ### Merge or Split Cells [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -205,6 +211,7 @@ q
 ### Set Borders Style [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -229,6 +236,7 @@ q
 ### Single Background Color [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -245,6 +253,7 @@ q
 ### Multiple Background Color [POST]
 
 + Request (application/json)
+
     + Headers 
         
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -262,6 +271,7 @@ q
 ### Lock Cells Satatus [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -282,6 +292,7 @@ q
 ### Set Text Auto Wrap [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -296,6 +307,7 @@ q
 ### Set transverse Style [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -313,6 +325,7 @@ q
 ### Set vertically Style [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -332,6 +345,7 @@ q
 ### Setting Cells Type [POST]
     
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -356,6 +370,7 @@ q
 ### Setting Data Comments for explain [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -370,6 +385,7 @@ q
 ### Delete Data Comments [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -383,6 +399,7 @@ q
 ### Setting Data Content [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -397,6 +414,7 @@ q
 ### Clean Data Content [POST]
 
 + Request (application/json)
+
     + Headers
             
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -416,6 +434,7 @@ q
 ### Update Font Size [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -430,6 +449,7 @@ q
 ### Update Font Family [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -451,6 +471,7 @@ q
 ### Update Font Weight [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -465,6 +486,7 @@ q
 ### Update Font Italic [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -479,6 +501,7 @@ q
 ### Update Font Color [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -493,6 +516,7 @@ q
 ### Update Font Underline [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -503,28 +527,6 @@ q
 + Response 200
 
 
-# Group Table Opration
-
-<!--
-暂时弃用
-## Table Reload [/reload]
-
-### Reload All Info [POST]
-
-+ Request (application/json)
-    + Headers
-    
-            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
-    
-    + Attributes (Area px Info)
-
-+ Response 200 (application/json;charset=utf-8)
-    
-        {
-            "info":"这部分model结构有很多参数还不清楚，而且json结构层次太多，暂时不显示"
-        }
--->
-
 # Group Sheet Opration
 
 ## Table Paste [/sheet/paste]
@@ -532,6 +534,7 @@ q
 ### Paste All Info to Any Where [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -542,6 +545,7 @@ q
         + pasteData (array[Paste Object]) - 被格式化完的数据
         
 + Response 200 (application/json;charset=utf-8)
+
     + Attributes
         + isLegal: true(boolean) - 是否合法
     
@@ -562,6 +566,7 @@ q
 ### Cut or Copy Info to Any Where [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -583,6 +588,7 @@ q
     在冻结首行、列时，位置会根据不同的情况，用`-1`代表
     
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -600,6 +606,7 @@ q
 ### UnFrozen Position [GET]
     
 + Request
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -613,6 +620,7 @@ q
 ### Undo Oprtaion [GET]
 
 + Request
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -626,6 +634,7 @@ q
 ### Redo Opration [GET]
 
 + Request
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -640,6 +649,7 @@ q
 ### Current View Protect Status [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -661,6 +671,7 @@ q
 ### Set Data Validate [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -680,6 +691,7 @@ q
 ### Rule Information For Current Coordinate [POST]
 
 + Request (application/json)
+
     + Headers
             
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -698,6 +710,7 @@ q
 ### All Options And Rule Information [POST]
 
 + Request (application/json)
+
     + Headers
             
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -705,6 +718,7 @@ q
     + Attributes (Operation Coordinate)
     
 + Response 200 (application/json;charset=utf-8)
+
     + Attributes
         + rule (Vaildate Object)
         + index: 1 (number) - 规则索引
@@ -715,6 +729,7 @@ q
 ### Load Area Information [POST]
 
 + Request (application/json)
+
     + Headers
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
@@ -900,6 +915,29 @@ q
                     }
                 }
             }
+    
+# Group Table Opration
+
+## Table Reload [/reload]
+
+### Reload All Info [POST]
+
++ Request (application/json)
+
+    + Headers
+    
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
+    
+    + Attributes (Area px Info)
+
++ Response 200 (application/json;charset=utf-8)
+
+    + Body
+            
+            {
+                "info":"这部分model结构有很多参数还不清楚，而且json结构层次太多，暂时不显示"
+            }
+
     
         
 
