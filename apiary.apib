@@ -45,7 +45,7 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 | 接口码        | 释义        | 应用的场景           |
 | ------------- |-------------| ---------------------|
 | 413           | 资源不能处理| 文件上传，RMI远程调用|
-| 400           | 参数错误    | excelId或step参数缺失|
+| 400           | 参数错误    | X-Book-Id或step参数缺失|
 
 > 以 `HTTP Status Code` 码为标准
 q
@@ -94,7 +94,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
             step: 1
             
     + Attributes (Row Number)
@@ -118,7 +118,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes
         + num: 30(number) - 增加的数量
@@ -142,7 +142,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Col Number)
     
@@ -155,7 +155,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Col Number)
         + offset: `87`(number) - 调整后的值,最小值为5px
@@ -169,7 +169,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes
         + num: 30(number) - 增加的数量
@@ -194,7 +194,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
 
@@ -207,7 +207,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + direction: `top` (enum[string])
@@ -231,7 +231,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + color: `rgb(73, 68, 41)` (string) - 编码遵循RGB的规则编码，以后还需要加入透明
@@ -247,7 +247,7 @@ q
 + Request (application/json)
     + Headers 
         
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes 
         + coordinate (array[Coordinate properties])
@@ -264,7 +264,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
             
     + Attributes
         + coordinate (array[Coordinate properties])
@@ -284,7 +284,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + auto: false (boolean) - 默认不是自动换行，true为自动换行
@@ -298,7 +298,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + align: `left` (enum[string])
@@ -315,7 +315,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + align: `top` (enum[string])
@@ -334,7 +334,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + format:`routine`(enum[string]) - 常规类型
@@ -358,7 +358,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + comment: `<script>console.log("1")</script>`(string, required) - 输入的内容，内容需要经过转码的，防止代码攻击
@@ -372,7 +372,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
 
@@ -385,7 +385,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + content: `<script>console.log("1")</script>`(string) - 输入的内容，内容需要经过转码的，防止代码攻击
@@ -399,7 +399,7 @@ q
 + Request (application/json)
     + Headers
             
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
             
     + Attributes
         + coordinate (array[Coordinate properties])
@@ -418,7 +418,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + size: `12`(number) - 字体默认是12pt，最大值48，都是以pt为单位
@@ -432,7 +432,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + family: `宋体`(enum[string]) - 字体默认是宋体，其余字体风格是枚举类型
@@ -453,7 +453,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + weight: false (boolean) - 默认非粗体，true是粗体
@@ -467,7 +467,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + italic: false (boolean) - 默认为非斜体
@@ -481,7 +481,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Coordinate)
         + color: `#000` (string) - 编码遵循RGB的规则编码
@@ -495,7 +495,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
         
     + Attributes (Coordinate)
         + underline: 1 (number) - 默认为没有下划线，1：单下划线，0：无
@@ -514,7 +514,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Area px Info)
 
@@ -534,7 +534,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Operation Coordinate)
         + colLen: 1 (number) - 粘贴数据的列数
@@ -564,7 +564,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes
         + orignal (Coordinate properties) - 数据原来的位置
@@ -585,7 +585,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Operation Coordinate) 
         + viewRow: 2(number) - 冻结时，用户可以看到范围，行编号
@@ -602,7 +602,7 @@ q
 + Request
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
 
 + Response 200
 
@@ -615,7 +615,7 @@ q
 + Request
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
 
 + Response 200
 
@@ -628,7 +628,7 @@ q
 + Request
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
 
 + Response 200
 
@@ -642,7 +642,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes
         + protect: true (boolean) - 是否保护工作表，true是保护，false不保护
@@ -663,7 +663,7 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes
         + coordinate (array[Coordinate properties])
@@ -682,7 +682,7 @@ q
 + Request (application/json)
     + Headers
             
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
             
     + Attributes (Operation Coordinate)
     
@@ -700,7 +700,7 @@ q
 + Request (application/json)
     + Headers
             
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
             
     + Attributes (Operation Coordinate)
     
@@ -710,8 +710,6 @@ q
         + index: 1 (number) - 规则索引
         + expResult: 1,2,4,5 (array) - 所有选项
 
-<!--
-暂时弃
 ## Load Area By PX [/sheet/area]
 
 ### Load Area Information [POST]
@@ -719,16 +717,139 @@ q
 + Request (application/json)
     + Headers
     
-            excelId: 28b60797-8457-4410-8fac-db1161839cc7
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
         
     + Attributes (Area px Info)
         
 + Response 200 (application/json;charset=utf-8)
 
-        {
-            "info":"这部分model结构有很多参数还不清楚，而且json结构层次太多，暂时不显示"
-        }
--->
+    + Body
+    
+            {
+                cells: [{
+                    border: {
+                        all: false,
+                        bottom: false,
+                        left: false,
+                        none: false,
+                        outer: false,
+                        right: false,
+                        top: false
+                    },
+                    content: {
+                        alignCol: "bottom",
+                        alignRow: "left",
+                        bold: false,
+                        color: "rgb(0,0,0)",
+                        displayTexts: "123.00",
+                        family: "SimSun",
+                        italic: false,
+                        size: 11,
+                        texts: "123",
+                        underline: 0,
+                        wordWrap: false,
+                        type: "number",
+                        express: "###.##",
+                        background: "rgb(23,54,93)",
+                        locked: false
+                    },
+                    customProp: {
+                        highlight: false,
+                        comment: "mark contexts"
+                    }
+                }],
+                gridLineRow: [{
+                    alias: "26",
+                    hidden: false,
+                    sort: 25,
+                    left: 1750,
+                    width: 69,
+                    props: {
+                        border: {},
+                        content: {},
+                        customProp: {},
+                    }
+                }]
+            }
+        
+    + Schema
+            
+            {
+                type: "object",
+                properties: {
+                    cells: {
+                        type: "array",
+                        items: {
+                            type: "object",
+                            properties: {
+                                border: {
+                                    type: "object",
+                                    description: "border不包含在层的div内，所以属性独立出来"
+                                },
+                                content: {
+                                    type: "object",
+                                    properties: {
+                                        alignCol: {
+                                            type: "string",
+                                            description: "可能值：bottom | top | middle"
+                                        },
+                                        alignRow : {
+                                            type: "string",
+                                            description: "可能值：left | center | right"
+                                        },
+                                        displayTexts: {
+                                            type: "string",
+                                            description: "经过处理后的内容(格式化、计算等...之后的结果)"
+                                        },
+                                        family: {
+                                            type: "string",
+                                            description: "所有字体都用英文，不能用中文的`宋体`，以免产生编码问题"
+                                        },
+                                        texts: {
+                                            type: "string",
+                                            description: "用户输入的内容"
+                                        },
+                                        underline: {
+                                            type: "number",
+                                            description: "用0的，是考虑到可能还有双下划线的情况, 0:没有，1: 单线 2：双线"
+                                        },
+                                        type: {
+                                            type: "string",
+                                            description: "可能的值：number | text | normal | currency"
+                                        },
+                                        express: {
+                                            type: "string",
+                                            description: "表达式需要构建一个完整的解释器，用来表示数据格式"
+                                        }
+                                    }
+                                },
+                                customProp: {
+                                    type: "object",
+                                    description: "特殊的属性:第三方特殊要求"
+                                }
+                            }
+                        }
+                    },
+                    gridLineRow: {
+                        type: "array",
+                        items: {
+                            type: "object",
+                            properties: {
+                                sort: {
+                                    type: "number",
+                                    description: "这个对象在java端，排序完的顺序索引"
+                                },
+                                props: {
+                                    type: "object",
+                                    description: "引用自cell的属性"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    
+        
 
 # Data Structures
 
@@ -773,4 +894,4 @@ q
 
 + formula1: `min` (string) - 可能不存在
 + formula2: `max` (string) - 可能不存在
-+ validationType: 4 (number) - 数据类型
++ type: 4 (number) - 数据类型
