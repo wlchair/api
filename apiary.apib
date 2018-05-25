@@ -193,7 +193,7 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes
+    + Attributes 
         + coordinate (array[Coordinate properties])
         + direction: `top` (enum[string])
             + Members
@@ -204,7 +204,10 @@ q
                 + `all`
                 + `outer`
                 + `none`
-
+        + line: `thick` (enum[string])
+            + Members
+                + `thick`
+                + `thin`
 + Response 200
 
 ## Set Background [/cell/bg]
@@ -734,8 +737,8 @@ q
                     content: {
                         alignCol: "bottom",
                         alignRow: "left",
-                        bold: false,
-                        color: "rgba(0,0,0,1)",
+                        weight: false,
+                        color: "rgba(0, 0, 0, 1)",
                         displayTexts: "123.00",
                         family: "SimSun",
                         italic: false,
@@ -927,13 +930,10 @@ q
                     viewColAlias: "1",
                     cells: [{
                         border: {
-                            all: false,
-                            bottom: false,
-                            left: false,
-                            none: false,
-                            outer: false,
-                            right: false,
-                            top: false
+                            bottom: "thick",
+                            left: "thin",
+                            right: "thick",
+                            top: "thin"
                         },
                         content: {
                             alignCol: "bottom",
@@ -1019,6 +1019,15 @@ q
                             type: "object",
                             description: "返回对象里的cells、gridLineCol、gridLineRow、validate内容和area请求一致"
                             properties: {
+                                cells: {
+                                    type: "array",
+                                    items: {
+                                        border: {
+                                            type: "object",
+                                            description: "还原时，单元格边框只有四个方向，类型是两种"
+                                        }
+                                    }
+                                },
                                 maxColAlias: {
                                     type: "number",
                                     description: "列别名目前的最大值"
