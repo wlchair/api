@@ -44,6 +44,9 @@ HOST: http://excel-inc.acmr.com.cn:20064/master/
 >>      endCol: 5
 >>}
 >>```
+> 数据存储用`alias`, 字符串类型
+> 交互上, 表示位置的用`sort`值，数字类型
+> 交互上，表示像素值的`px`，数字类型
 
 ### 接口返回码
 
@@ -938,7 +941,7 @@ q
                         content: {
                             alignCol: "bottom",
                             alignRow: "left",
-                            bold: false,
+                            weight: false,
                             color: "rgba(0,0,0,1)",
                             displayTexts: "",
                             family: "SimSun",
@@ -1069,10 +1072,10 @@ q
 -->
 
 ## Col Number
-+ col: 1(number) - 列号
++ col: 1 (number) - 列号
 
 ## Row Number
-+ row: 3(number) - 行号
++ row: 3 (number) - 行号
 
 ## Area px Info (object)
 + top: 1117 (number) - 请求区域的顶部像素
@@ -1084,10 +1087,10 @@ q
 + coordinate (Coordinate properties) - 选中区域坐标
 
 ## Coordinate properties (object) - 操作区域坐标属性列表
-+ startCol: 1(number) - 选中区域开始列号
-+ startRow: 1(number) - 选中区域开始行号
-+ endCol: 1(number) - 选中区域结束列号
-+ endRow: 1(number) - 选中区域结束行号
++ startCol: 1 (number) - 选中区域开始列号
++ startRow: 1 (number) - 选中区域开始行号
++ endCol: 1 (number) - 选中区域结束列号
++ endRow: 1 (number) - 选中区域结束行号
     
 ## Operation Coordinate (object) - 不管是原始操作位还是选择区域，传递时只需要给出具体以哪个点为操作点
     
