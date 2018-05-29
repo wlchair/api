@@ -207,10 +207,7 @@ q
                 + `all`
                 + `outer`
                 + `none`
-        + line: `thick` (enum[string])
-            + Members
-                + `thick`
-                + `thin`
+        + line: 0 (number) - 0：无边框，1：细边框，2：粗边框
 + Response 200
 
 ## Set Background [/cell/bg]
@@ -933,10 +930,10 @@ q
                     viewColAlias: "1",
                     cells: [{
                         border: {
-                            bottom: "thick",
-                            left: "thin",
-                            right: "thick",
-                            top: "thin"
+                            bottom: 1,
+                            left: 0,
+                            right: 2,
+                            top: 0
                         },
                         content: {
                             alignCol: "bottom",
