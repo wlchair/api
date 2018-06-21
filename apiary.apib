@@ -168,8 +168,8 @@ q
 ## Merge or Split [/cell/{actionType}]
 
 + Parameters
-    + actionType: `merge`(string) - 动作类型
-        + Members
+    + actionType: `merge` (enum[string]) - 动作类型
+        + Members 
             + `merge`
             + `split`
 
@@ -319,7 +319,7 @@ q
     
     + Attributes 
         + coordinate (array[Coordinate properties])
-        + format:`routine`(enum[string]) - 常规类型
+        + format: `routine` (enum[string])
             + Members
                 + `routine` - 常规类型
                 + `text`
@@ -431,7 +431,7 @@ q
     
     + Attributes 
         + coordinate (array[Coordinate properties])
-        + family: `宋体`(enum[string]) - 字体默认是宋体，其余字体风格是枚举类型
+        + family: `宋体` (enum[string]) - 字体默认是宋体，其余字体风格是枚举类型
             + Members
                 + `宋体`
                 + `微软雅黑`
@@ -509,7 +509,7 @@ q
 
 # Group Sheet Opration
 
-## Table Paste [/sheet/paste]
+## Table Outer Paste [/sheet/paste]
 
     [同步操作]
 
@@ -522,9 +522,7 @@ q
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
     + Attributes (Operation Coordinate)
-        + colLen: 1 (number) - 粘贴数据的列数
-        + rowLen: 1 (number) - 粘贴数据的行数
-        + pasteData (array[Paste Object]) - 被格式化完的数据
+        + content: `example: paste content, testing, 123, <script>alert('sql insert')</script> and 中文` - 粘贴的内容
         
 + Response 200 (application/json;charset=utf-8)
 
@@ -533,13 +531,11 @@ q
     
 + Response 400
 
-## Table Cut & Copy [/sheet/{actionType}]
+## Table Inner Cut & Copy [/sheet/{actionType}]
     
 + Parameters
-    + actionType: `cut`(string)
-        这个动作是剪切或者复制，这个动作的触发只能在excel出现，跟外部交互的操作都是粘贴操作，
-        由于浏览器的保护，数据不能获取被剪切到外部的事件
-        + Members
+    + actionType: `cut` (enum[string]) - 内部没有paste动作
+        + Members 
             + `cut`
             + `copy`
 
@@ -704,6 +700,25 @@ q
         + index: 1 (number) - 规则索引
         + expResult: 1,2,4,5 (array) - 所有选项
 
+
+## Add Area By PX [/sheet/expand]
+
+### Add Area for expand [POST]
+
++ Request (application/json)
+    
+    + Headers
+    
+            X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
+            
+    + Attributes
+        + type: 'row' (enum[string]) - 增加的类型，行还是列
+            + Members
+                + 'row'
+                + 'col'
+        + num: 20 (number) - 增加的数量
+        
++ Response 200
 
 ## Load Area By PX [/sheet/area]
 
@@ -1093,11 +1108,6 @@ q
     
 + oprCol: 4 (number) - 列坐标点
 + oprRow: 6 (number) - 行坐标点
-
-## Paste Object(Col Number) - 粘贴进来的格式化对象
-+ content: `example: paste content, testing, 123, <script>alert('sql insert')</script> and 中文` - 粘贴的内容
-+ row: 1 (number) - 相对于初始位置的距离
-+ col: 3 (number) - 相对于初始位置的距离
 
 ## Vaildate Object (object) - 数据验证对象，选择区域表示：${列名}${行名称}（左上）:${列名称}${行名称}（右下）当整行、列选择时，省略统一位置：${位置}:${位置}
 
