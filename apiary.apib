@@ -116,8 +116,7 @@ q
     行高调整
     
 + Request (application/json)
-    + Attributes (Row Number)
-        + offset: `87`(number) - 调整后的值,最小值为5px
+    + Attributes (Adjust Row)
     
 + Response 200
 
@@ -155,8 +154,7 @@ q
     
             X-Book-Id: 28b60797-8457-4410-8fac-db1161839cc7
     
-    + Attributes (Col Number)
-        + offset: `87`(number) - 调整后的值,最小值为5px
+    + Attributes (Adjust Col)
     
 + Response 200
 
@@ -264,6 +262,7 @@ q
     + Attributes 
         + coordinate (array[Coordinate properties])
         + auto: false (boolean) - 默认不是自动换行，true为自动换行
+        + effect (array[Adjust Row])
 
 + Response 200
 
@@ -378,6 +377,7 @@ q
     
     + Attributes (Coordinate)
         + content: `<script>console.log("1")</script>`(string) - 输入的内容，内容需要经过转码的，防止代码攻击
+        + effect (array[Adjust Row])
 
 + Response 200
 
@@ -1082,6 +1082,12 @@ q
 暂时弃用
 + sheetId: `1` (string) - 字符串类型的sheetId，自增的整数
 -->
+
+## Adjust Row (Row Number)
++ offset: 87 (number) - 调整后的值,最小值为5px
+
+## Adjust Col (Col Number)
++ offset: 76 (number) - 调整后的值,最小值为5px
 
 ## Col Number
 + col: 1 (number) - 列号
